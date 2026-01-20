@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Marca - Catalyst Frame</title>
+
+    <!-- Fuentes y estilos CSS existentes... -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+
+    <link href="./css/styles.css" rel="stylesheet">
+    <!-- Toastify CSS (opcional pero recomendado) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-content">
+                <div class="header-left">
+                    <button class="back-button" onclick="window.location.href='marcas.html'">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5M12 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="header-title">
+                        <h1>
+                            <svg class="icon icon-lg" style="color: var(--primary-color);" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                            </svg>
+                            Nueva Marca
+                        </h1>
+                        <p>Registra una nueva marca o cliente</p>
+                    </div>
+                </div>
+                <button type="submit" form="marcaForm" class="btn-primary">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                    Guardar Marca
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <form id="marcaForm">
+
+            <!-- Información de la Marca -->
+            <section class="form-section">
+                <div class="section-header">
+                    <svg class="icon icon-lg" style="color: var(--primary-color);" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                        </path>
+                    </svg>
+                    <h2>Información de la Marca</h2>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label>Nombre de la Empresa <span class="required">*</span></label>
+                        <input type="text" class="form-control" name="nombre_empresa" placeholder="Ej: L'Oréal Paris"
+                            required="">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" class="form-control" name="titulo"
+                            placeholder="Ej: División Cosmética Premium">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Industria/Sector</label>
+                        <select class="form-control" name="industria">
+                            <option value="">Seleccionar</option>
+                            <option value="cosmetica">Cosmética y Belleza</option>
+                            <option value="moda">Moda y Textil</option>
+                            <option value="deportes">Deportes</option>
+                            <option value="tecnologia">Tecnología</option>
+                            <option value="alimentos">Alimentos y Bebidas</option>
+                            <option value="automotriz">Automotriz</option>
+                            <option value="entretenimiento">Entretenimiento</option>
+                            <option value="farmaceutica">Farmacéutica</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Número de Identificación Fiscal</label>
+                        <input type="text" class="form-control" name="numero_identificacion_fiscal"
+                            placeholder="Ej: 21345678901">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tipo de Contacto</label>
+                        <select class="form-control" name="tipo_contacto">
+                            <option value="">Seleccionar</option>
+                            <option value="marca">Marca</option>
+                            <option value="cliente_corporativo">Cliente Corporativo</option>
+                            <option value="distribuidor">Distribuidor</option>
+                            <option value="subsidiaria">Subsidiaria</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Idioma Preferido</label>
+                        <select class="form-control" name="idioma">
+                            <option value="">Seleccionar idioma</option>
+                            <option value="español">Español</option>
+                            <option value="ingles">Inglés</option>
+                            <option value="portugues">Portugués</option>
+                            <option value="frances">Francés</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grupo de Marcas (Opcional) -->
+            <section class="form-section">
+                <div class="section-header">
+                    <svg class="icon icon-lg" style="color: var(--primary-color);" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <h2>Grupo de Marcas (Opcional)</h2>
+                </div>
+                <p class="section-description">Si esta marca pertenece a un grupo corporativo (ej: L'Oréal Groupe,
+                    Unilever), selecciónalo aquí</p>
+
+                <div class="form-grid">
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label>Grupo Corporativo</label>
+                        <select class="form-control" name="grupo_marcas">
+                            <option value="">Sin grupo / Marca independiente</option>
+                            <option value="loreal_groupe">L'Oréal Groupe</option>
+                            <option value="unilever">Unilever</option>
+                            <option value="procter_gamble">Procter &amp; Gamble</option>
+                            <option value="coca_cola">The Coca-Cola Company</option>
+                            <option value="pepsico">PepsiCo</option>
+                            <option value="nestle">Nestlé</option>
+                            <option value="lvmh">LVMH</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="info-banner">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    <p>Las marcas del mismo grupo compartirán reportes consolidados y podrán verse como una unidad en
+                        análisis corporativos.</p>
+                </div>
+            </section>
+
+            <!-- Dirección -->
+            <section class="form-section">
+                <div class="section-header">
+                    <svg class="icon icon-lg" style="color: var(--primary-color);" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <h2>Dirección</h2>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label>Calle</label>
+                        <input type="text" class="form-control" name="calle" placeholder="Ej: Av. Libertador 1234">
+                    </div>
+
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label>Calle 2 (Opcional)</label>
+                        <input type="text" class="form-control" name="calle_2" placeholder="Piso, oficina, torre">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ciudad</label>
+                        <input type="text" class="form-control" name="ciudad" placeholder="Ej: Buenos Aires">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Estado/Provincia</label>
+                        <input type="text" class="form-control" name="estado" placeholder="Ej: Buenos Aires">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Código Postal</label>
+                        <input type="text" class="form-control" name="codigo_postal" placeholder="Ej: C1425">
+                    </div>
+
+                    <div class="form-group">
+                        <label>País</label>
+                        <select class="form-control" name="pais">
+                            <option value="">Seleccionar país</option>
+                            <option value="argentina">Argentina</option>
+                            <option value="brasil">Brasil</option>
+                            <option value="chile">Chile</option>
+                            <option value="colombia">Colombia</option>
+                            <option value="mexico">México</option>
+                            <option value="uruguay">Uruguay</option>
+                            <option value="paraguay">Paraguay</option>
+                            <option value="españa">España</option>
+                            <option value="eeuu">Estados Unidos</option>
+                            <option value="francia">Francia</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Información de Contacto General -->
+            <section class="form-section">
+                <div class="section-header">
+                    <svg class="icon icon-lg" style="color: var(--primary-color);" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                        </path>
+                    </svg>
+                    <h2>Información de Contacto General</h2>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Teléfono Principal <span class="required">*</span></label>
+                        <input type="tel" class="form-control" name="telefono" placeholder="+1 234 567 8900"
+                            required="">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Teléfono Móvil</label>
+                        <input type="tel" class="form-control" name="movil" placeholder="+1 234 567 8901">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Correo Electrónico Principal <span class="required">*</span></label>
+                        <input type="email" class="form-control" name="correo_electronico"
+                            placeholder="contacto@marca.com" required="">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sitio Web</label>
+                        <input type="url" class="form-control" name="sitio_web" placeholder="https://marca.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Puesto de Trabajo (Contacto Principal)</label>
+                        <input type="text" class="form-control" name="puesto_trabajo"
+                            placeholder="Ej: Director de Marketing">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Firma de Jefe</label>
+                        <input type="text" class="form-control" name="firma_jefe" placeholder="Nombre del responsable">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Destinatarios Especiales (Contratos y Cotizaciones) -->
+            <section class="form-section">
+                <div class="section-header">
+                    <svg class="icon icon-lg" style="color: var(--primary-color);" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <h2>Destinatarios de Documentación</h2>
+                </div>
+                <p class="section-description">Correos electrónicos específicos para el envío automático de contratos y
+                    cotizaciones</p>
+
+                <div class="highlight-box">
+                    <h3>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        Campos Especiales - Automatización de Envíos
+                    </h3>
+
+                    <div class="form-grid">
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <div class="email-field-wrapper">
+                                <div class="email-label">
+                                    <div class="email-icon contracts">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                        </svg>
+                                    </div>
+                                    Destinatario Correo - Contratos
+                                </div>
+                                <input type="email" class="form-control" name="destinatario_contratos"
+                                    placeholder="contratos@marca.com">
+                                <small
+                                    style="display: block; margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.8rem;">
+                                    Los contratos se enviarán automáticamente a este correo
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <div class="email-field-wrapper">
+                                <div class="email-label">
+                                    <div class="email-icon quotes">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        </svg>
+                                    </div>
+                                    Destinatario Correo - Cotizaciones
+                                </div>
+                                <input type="email" class="form-control" name="destinatario_cotizaciones"
+                                    placeholder="cotizaciones@marca.com">
+                                <small
+                                    style="display: block; margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.8rem;">
+                                    Las cotizaciones se enviarán automáticamente a este correo
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Etiquetas -->
+            <section class="form-section">
+                <div class="section-header">
+                    <svg class="icon icon-lg" style="color: var(--primary-color);" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                        <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                    </svg>
+                    <h2>Etiquetas</h2>
+                </div>
+
+                <div class="tags-container">
+                    <div class="tags-input-group">
+                        <input type="text" class="form-control" id="nuevaEtiqueta" placeholder="Agregar etiqueta...">
+                        <button type="button" class="btn-add" onclick="agregarEtiqueta()">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            Agregar
+                        </button>
+                    </div>
+                    <div class="tags-list" id="tagsList"></div>
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <div class="form-actions">
+                <button type="button" class="btn-secondary" onclick="window.location.href='marcas.html'">
+                    Cancelar
+                </button>
+                <button type="submit" class="btn-primary">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                    Guardar Marca
+                </button>
+            </div>
+
+        </form>
+    </main>
+
+
+
+    <!-- Scripts -->
+    <!-- Toastify JS (opcional pero recomendado) -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <!-- Scripts de la aplicación en orden -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/marcas/nueva-marca.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+/**
+ * ================================================
+ * ESTILOS ESPECÍFICOS: agencias.html
+ * ================================================
+ * Tarjetas de agencia, avatars y lista de talentos
+ */
+
+/* ================================================
+   GRID DE AGENCIAS
+   ================================================ */
+.agencies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+/* ================================================
+   TARJETAS DE AGENCIA
+   ================================================ */
+.agency-card {
+    background: var(--white);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.agency-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.agency-header {
+    background: linear-gradient(135deg, var(--primary-color), #6366f1);
+    padding: 1.5rem;
+    position: relative;
+}
+
+.agency-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 0.75rem;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.agency-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+}
+
+.agency-location {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.agency-body {
+    padding: 1.5rem;
+}
+
+/* ================================================
+   INFORMACIÓN DE AGENCIA
+   ================================================ */
+.agency-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.info-item svg {
+    color: var(--primary-color);
+}
+
+/* ================================================
+   SECCIÓN DE TALENTOS
+   ================================================ */
+.talents-section {
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+.talents-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.talents-header h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.talent-count {
+    background: rgba(79, 70, 229, 0.1);
+    color: var(--primary-color);
+    padding: 0.25rem 0.625rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.talents-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.talent-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    background: var(--gray-50);
+    border-radius: 0.5rem;
+    transition: background 0.2s;
+}
+
+.talent-item:hover {
+    background: var(--gray-100);
+}
+
+.talent-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--white);
+    flex-shrink: 0;
+}
+
+.talent-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* ================================================
+   ACCIONES DE AGENCIA
+   ================================================ */
+.agency-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* ================================================
+   RESPONSIVE
+   ================================================ */
+@media (max-width: 768px) {
+    .agencies-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,247 @@
+/**
+ * ================================================
+ * ESTILOS ESPECÍFICOS: marcas.html
+ * ================================================
+ * Tarjetas de marca, logos personalizados
+ * y contactos especiales
+ */
+
+/* ================================================
+   GRID DE MARCAS
+   ================================================ */
+.brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+/* ================================================
+   TARJETAS DE MARCA
+   ================================================ */
+.brand-card {
+    background: var(--white);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.brand-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.brand-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1.5rem;
+    position: relative;
+}
+
+.brand-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 1rem;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.brand-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.brand-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.375rem 0.875rem;
+    border-radius: 1rem;
+    color: var(--white);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.brand-body {
+    padding: 1.5rem;
+}
+
+/* ================================================
+   INFORMACIÓN DE MARCA
+   ================================================ */
+.brand-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-section {
+    border-bottom: 1px solid var(--gray-100);
+    padding-bottom: 1rem;
+}
+
+.info-section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.info-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-item svg {
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+/* ================================================
+   CONTACTOS ESPECIALES
+   ================================================ */
+.brand-contacts {
+    background: var(--gray-50);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-icon.contracts {
+    background: rgba(79, 70, 229, 0.1);
+    color: var(--primary-color);
+}
+
+.contact-icon.quotes {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+}
+
+.contact-info-text {
+    flex: 1;
+}
+
+.contact-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.contact-email {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    word-break: break-all;
+}
+
+/* ================================================
+   LOGOS CON COLORES ESPECÍFICOS
+   ================================================ */
+.logo-loreal {
+    background: linear-gradient(135deg, #000000, #333333);
+    color: white;
+}
+
+.logo-nike {
+    background: linear-gradient(135deg, #ff6b00, #ff9a00);
+    color: white;
+}
+
+.logo-adidas {
+    background: linear-gradient(135deg, #000000, #1a1a1a);
+    color: white;
+}
+
+.logo-coca {
+    background: linear-gradient(135deg, #f40009, #ff4444);
+    color: white;
+}
+
+.logo-apple {
+    background: linear-gradient(135deg, #a6b1b7, #d5dde0);
+    color: #333;
+}
+
+.logo-unilever {
+    background: linear-gradient(135deg, #0057b8, #0077d4);
+    color: white;
+}
+
+.logo-pg {
+    background: linear-gradient(135deg, #003da5, #0051c7);
+    color: white;
+}
+
+.logo-nestle {
+    background: linear-gradient(135deg, #00427a, #005a9c);
+    color: white;
+}
+
+.logo-lvmh {
+    background: linear-gradient(135deg, #1a1a1a, #333333);
+    color: white;
+}
+
+/* ================================================
+   ACCIONES DE MARCA
+   ================================================ */
+.brand-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* ================================================
+   RESPONSIVE
+   ================================================ */
+@media (max-width: 768px) {
+    .brands-grid {
+        grid-template-columns: 1fr;
+    }
+}

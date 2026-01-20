@@ -1,0 +1,304 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// MARCAS Y GRUPOS
+// ============================================
+
+model GrupoMarcas {
+  id        String   @id @default(cuid())
+  nombre    String   @unique
+  marcas    Marca[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("grupos_marcas")
+}
+
+model Marca {
+  id                          String        @id @default(cuid())
+  nombreEmpresa               String
+  titulo                      String?
+  industria                   String?
+  numeroIdentificacionFiscal  String?
+  tipoContacto                String?
+  idioma                      String?
+  
+  // Dirección
+  calle                       String?
+  calle2                      String?
+  ciudad                      String?
+  estado                      String?
+  codigoPostal                String?
+  pais                        String?
+  
+  // Contacto General
+  telefono                    String
+  movil                       String?
+  correoElectronico           String          @unique 
+  sitioWeb                    String?
+  puestoTrabajo               String?
+  firmaJefe                   String?
+  
+  // Destinatarios especiales
+  destinatarioContratos       String?
+  destinatarioCotizaciones    String?
+  
+  // Etiquetas (JSON array)
+  etiquetas                   Json?
+  
+  // Relaciones
+  grupoId                     String?
+  grupo                       GrupoMarcas? @relation(fields: [grupoId], references: [id])
+  transacciones               Transaccion[]
+  
+  createdAt                   DateTime     @default(now())
+  updatedAt                   DateTime     @updatedAt
+
+  @@index([grupoId])
+  @@map("marcas")
+}
+
+// ============================================
+// TALENTOS Y AGENCIAS
+// ============================================
+
+model Agencia {
+  id                          String    @id @default(cuid())
+  nombreEmpresa               String
+  titulo                      String?
+  numeroIdentificacionFiscal  String
+  tipoContacto                String?
+  idioma                      String?
+  
+  // Dirección
+  calle                       String?
+  calle2                      String?
+  ciudad                      String?
+  estado                      String?
+  codigoPostal                String?
+  pais                        String?
+  
+  // Contacto
+  telefono                    String
+  movil                       String?
+  correoElectronico           String
+  sitioWeb                    String?
+  puestoTrabajo               String?
+  firmaJefe                   String?
+  
+  // Etiquetas (JSON array)
+  etiquetas                   Json?
+  
+  // Relaciones
+  talentos                    TalentoAgencia[]
+  
+  createdAt                   DateTime  @default(now())
+  updatedAt                   DateTime  @updatedAt
+
+  @@map("agencias")
+}
+
+model Talento {
+  id                          String    @id @default(cuid())
+  
+  // Información Personal
+  nombreCompleto              String
+  fechaNacimiento             DateTime?
+  genero                      String?
+  nacionalidad                String?
+  documentoIdentidad          String    @unique
+  tipoDocumento               String?
+  
+  // Dirección Personal
+  direccionCalle              String?
+  direccionApto               String?
+  ciudad                      String?
+  departamento                String?
+  codigoPostal                String?
+  pais                        String?
+  
+  // Contacto Personal
+  telefonoPrincipal           String
+  telefonoAlternativo         String?
+  emailPersonal               String    @unique
+  emailAlternativo            String?
+  sitioWebPersonal            String?
+  linkedin                    String?
+  
+  // Información Profesional (si es independiente)
+  esTalentoIndependiente      Boolean   @default(false)
+  nombreArtistico             String?
+  especialidad                String?
+  anosExperiencia             Int?
+  tarifaBase                  Decimal?  @db.Decimal(10, 2)
+  biografia                   String?   @db.Text
+  
+  // Datos de Facturación
+  razonSocial                 String?
+  rutFiscal                   String?
+  tipoContribuyente           String?
+  monedaFacturacion           String?
+  direccionFiscal             String?
+  ciudadFiscal                String?
+  codigoPostalFiscal          String?
+  paisFiscal                  String?
+  
+  // Datos Bancarios
+  banco                       String?
+  numeroCuenta                String?
+  tipoCuenta                  String?
+  swift                       String?
+  titularCuenta               String?
+  paypal                      String?
+  
+  // Assets - Redes Sociales
+  traackrId                   String?
+  instagram                   String?
+  tiktok                      String?
+  youtube                     String?
+  twitch                      String?
+  podcast                     String?
+  facebook                    String?
+  
+  // Relaciones
+  agencias                    TalentoAgencia[]
+  transacciones               Transaccion[]
+  
+  createdAt                   DateTime  @default(now())
+  updatedAt                   DateTime  @updatedAt
+
+  @@index([documentoIdentidad])
+  @@index([emailPersonal])
+  @@map("talentos")
+}
+
+model TalentoAgencia {
+  id          String   @id @default(cuid())
+  talentoId   String
+  agenciaId   String
+  rol         String   @default("principal") // principal, secundario, emergente, exclusivo
+  fechaInicio DateTime @default(now())
+  fechaFin    DateTime?
+  activo      Boolean  @default(true)
+  
+  talento     Talento  @relation(fields: [talentoId], references: [id], onDelete: Cascade)
+  agencia     Agencia  @relation(fields: [agenciaId], references: [id], onDelete: Cascade)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([talentoId, agenciaId])
+  @@index([talentoId])
+  @@index([agenciaId])
+  @@map("talento_agencia")
+}
+
+// ============================================
+// TRANSACCIONES (TRX)
+// ============================================
+
+model Transaccion {
+  id                    String              @id @default(cuid())
+  codigo                String              @unique // TRX-2024-001
+  tipo                  String              // multimarca_monotalento, monomarca_monotalento, etc.
+  estado                String              @default("borrador") // borrador, cotizacion_enviada, pendiente_firma, completado
+  
+  // Información de Campaña
+  nombreCampana         String
+  correoCampana         String
+  telefonoCampana       String?
+  responsableCampana    String
+  fechaImplementacion   DateTime?
+  
+  // Relaciones
+  marcaId               String?
+  marca                 Marca?              @relation(fields: [marcaId], references: [id])
+  talentoId             String
+  talento               Talento             @relation(fields: [talentoId], references: [id])
+  cotizaciones          Cotizacion[]
+  
+  // Metadata
+  valorEstimado         Decimal?            @db.Decimal(10, 2)
+  
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  @@index([marcaId])
+  @@index([talentoId])
+  @@index([codigo])
+  @@index([estado])
+  @@map("transacciones")
+}
+
+model Cotizacion {
+  id                    String              @id @default(cuid())
+  transaccionId         String
+  nombre                String              // Cotización A, B, C
+  
+  // Información del Contrato
+  fechasVigencia        String?
+  fechaLlenado          DateTime?
+  montoTotal            Decimal?            @db.Decimal(10, 2)
+  alcance               String?             // nacional, internacional
+  uso                   String?             // comercial, educativo, promocional
+  marcasInvolucradas    String?
+  exclusividad          String?             // si, no, parcial
+  
+  // Detalles de Acciones (JSON completo)
+  accionesDetalle       Json?               // Todo el detalle de plataformas, cantidades, etc.
+  
+  // Relaciones
+  transaccion           Transaccion         @relation(fields: [transaccionId], references: [id], onDelete: Cascade)
+  
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  @@index([transaccionId])
+  @@map("cotizaciones")
+}
+
+// ============================================
+// SISTEMA DE USUARIOS (OPCIONAL)
+// ============================================
+
+model Usuario {
+  id                String   @id @default(cuid())
+  nombre            String
+  email             String   @unique
+  password          String   // Hasheado
+  rol               String   @default("user") // admin, user, viewer
+  activo            Boolean  @default(true)
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("usuarios")
+}
+
+// ============================================
+// LOGS Y AUDITORÍA (OPCIONAL)
+// ============================================
+
+model LogActividad {
+  id          String   @id @default(cuid())
+  usuarioId   String?
+  accion      String   // crear, editar, eliminar, enviar
+  entidad     String   // transaccion, marca, talento, agencia
+  entidadId   String
+  detalles    Json?
+  
+  createdAt   DateTime @default(now())
+
+  @@index([usuarioId])
+  @@index([entidad, entidadId])
+  @@map("logs_actividad")
+}

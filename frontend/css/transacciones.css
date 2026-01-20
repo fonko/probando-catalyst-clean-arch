@@ -1,0 +1,274 @@
+/**
+ * ================================================
+ * ESTILOS ESPECÍFICOS: transacciones.html
+ * ================================================
+ * Tarjetas de transacciones, estados y documentos
+ */
+
+/* ================================================
+   LISTA DE TRANSACCIONES
+   ================================================ */
+.trx-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* ================================================
+   TARJETAS DE TRANSACCIÓN
+   ================================================ */
+.trx-card {
+    background: var(--white);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.trx-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.trx-card-header {
+    background: linear-gradient(135deg, var(--primary-color), #6366f1);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.trx-id-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.trx-id {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.trx-type-badge {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    padding: 0.375rem 0.875rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.trx-status {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.trx-status.borrador {
+    background: rgba(148, 163, 184, 0.2);
+    color: var(--gray-700);
+}
+
+.trx-status.cotizacion-enviada {
+    background: rgba(59, 130, 246, 0.2);
+    color: var(--info);
+}
+
+.trx-status.pendiente-firma {
+    background: rgba(245, 158, 11, 0.2);
+    color: var(--warning);
+}
+
+.trx-status.completado {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--success);
+}
+
+.trx-card-body {
+    padding: 1.5rem;
+}
+
+/* ================================================
+   INFORMACIÓN DE TRANSACCIÓN
+   ================================================ */
+.trx-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.trx-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.trx-info-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.trx-talent-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.trx-talent-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.trx-talent-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.trx-brands-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.brand-chip {
+    background: var(--gray-50);
+    border: 1px solid var(--border-color);
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.brand-chip.grupo {
+    background: rgba(147, 51, 234, 0.1);
+    border-color: var(--purple);
+    color: var(--purple);
+}
+
+/* ================================================
+   DOCUMENTOS
+   ================================================ */
+.trx-documents {
+    background: var(--gray-50);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.doc-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--white);
+    padding: 0.5rem 0.875rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    font-size: 0.875rem;
+}
+
+.doc-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.doc-icon.contrato {
+    background: rgba(79, 70, 229, 0.1);
+    color: var(--primary-color);
+}
+
+.doc-icon.cotizacion {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+}
+
+/* ================================================
+   ACCIONES DE TRANSACCIÓN
+   ================================================ */
+.trx-actions {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* ================================================
+   COLORES DE AVATAR
+   ================================================ */
+.bg-indigo {
+    background: #4f46e5;
+}
+
+.bg-purple {
+    background: #9333ea;
+}
+
+.bg-pink {
+    background: #ec4899;
+}
+
+.bg-blue {
+    background: #3b82f6;
+}
+
+.bg-cyan {
+    background: #06b6d4;
+}
+
+.bg-teal {
+    background: #14b8a6;
+}
+
+.bg-emerald {
+    background: #10b981;
+}
+
+.bg-orange {
+    background: #f97316;
+}
+
+/* ================================================
+   RESPONSIVE
+   ================================================ */
+@media (max-width: 768px) {
+    .trx-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .trx-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trx-actions {
+        flex-direction: column;
+    }
+}
