@@ -18,13 +18,99 @@ npx prisma generate
 
 ```text
 /
-├── frontend/             # Aplicación cliente (React/Vue/etc.)
-├── backend/              # API REST (Node.js + Express)
-│   ├── prisma/           # Esquemas y migraciones de base de datos
-│   ├── src/              # Código fuente (Clean Architecture)
-│   └── app.js            # Punto de entrada del servidor
-├── .env.example          # Plantilla de variables de entorno (Raíz)
-└── .gitignore            # Archivos ignorados por Git
+backend/
+├── src/
+│   ├── domain/              # Entidades y lógica de negocio
+│   │   ├── entities/
+│   │   │   ├── Marca.js
+│   │   │   ├── Talento.js
+│   │   │   ├── Agencia.js
+│   │   │   ├── Transaccion.js
+│   │   │   └── Cotizacion.js
+│   │   └── repositories/    # Interfaces (contratos)
+│   │       ├── IMarcaRepository.js
+│   │       ├── ITalentoRepository.js
+│   │       ├── IAgenciaRepository.js
+│   │       └── ITransaccionRepository.js
+│   │
+│   ├── application/         # Casos de uso
+│   │   ├── use-cases/
+│   │   │   ├── marca/
+│   │   │   │   ├── CreateMarca.js
+│   │   │   │   ├── GetMarcas.js
+│   │   │   │   ├── GetMarcaById.js
+│   │   │   │   ├── UpdateMarca.js
+│   │   │   │   └── DeleteMarca.js
+│   │   │   ├── talento/
+│   │   │   │   ├── CreateTalento.js
+│   │   │   │   ├── GetTalentos.js
+│   │   │   │   ├── GetTalentoById.js
+│   │   │   │   ├── UpdateTalento.js
+│   │   │   │   └── DeleteTalento.js
+│   │   │   ├── agencia/
+│   │   │   │   ├── CreateAgencia.js
+│   │   │   │   ├── GetAgencias.js
+│   │   │   │   ├── AddTalentoToAgencia.js
+│   │   │   │   └── RemoveTalentoFromAgencia.js
+│   │   │   └── transaccion/
+│   │   │       ├── CreateTransaccion.js
+│   │   │       ├── GetTransacciones.js
+│   │   │       ├── AddCotizacion.js
+│   │   │       └── UpdateEstadoTransaccion.js
+│   │   └── services/        # Servicios de aplicación
+│   │       └── EmailService.js
+│   │
+│   ├── infrastructure/      # Implementaciones concretas
+│   │   ├── database/
+│   │   │   ├── prisma/
+│   │   │   │   ├── client.js
+│   │   │   │   └── schema.prisma
+│   │   │   └── repositories/
+│   │   │       ├── PrismaMarcaRepository.js
+│   │   │       ├── PrismaTalentoRepository.js
+│   │   │       ├── PrismaAgenciaRepository.js
+│   │   │       └── PrismaTransaccionRepository.js
+│   │   ├── web/
+│   │   │   ├── routes/
+│   │   │   │   ├── marcas.routes.js
+│   │   │   │   ├── talentos.routes.js
+│   │   │   │   ├── agencias.routes.js
+│   │   │   │   └── transacciones.routes.js
+│   │   │   ├── controllers/
+│   │   │   │   ├── MarcaController.js
+│   │   │   │   ├── TalentoController.js
+│   │   │   │   ├── AgenciaController.js
+│   │   │   │   └── TransaccionController.js
+│   │   │   ├── middlewares/
+│   │   │   │   ├── errorHandler.js
+│   │   │   │   ├── validator.js
+│   │   │   │   └── auth.js
+│   │   │   └── app.js
+│   │   └── external/
+│   │       └── NodemailerEmailService.js
+│   │
+│   └── shared/              # Utilidades compartidas
+│       ├── errors/
+│       │   ├── AppError.js
+│       │   ├── NotFoundError.js
+│       │   └── ValidationError.js
+│       ├── validators/
+│       │   ├── marcaValidator.js
+│       │   ├── talentoValidator.js
+│       │   └── agenciaValidator.js
+│       └── utils/
+│           ├── logger.js
+│           └── response.js
+│
+├── tests/
+│   ├── unit/
+│   └── integration/
+│
+├── .env
+├── .env.example
+├── .gitignore
+├── package.json
+└── server.js
 🛠️ Tecnologías del Backend
 Runtime: Node.js
 
